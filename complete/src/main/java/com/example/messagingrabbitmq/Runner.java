@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class Runner implements CommandLineRunner {
 
 	private final RabbitTemplate rabbitTemplate;
-	private final Receiver receiver;
+	Receiver receiver;
 
 	public Runner(Receiver receiver, RabbitTemplate rabbitTemplate) {
 		this.receiver = receiver;

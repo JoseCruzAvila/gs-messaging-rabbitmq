@@ -44,8 +44,8 @@ public class MessagingRabbitmqApplication {
 	}
 
 	@Bean
-	MessageListenerAdapter listenerAdapter(Receiver receiver) {
-		return new MessageListenerAdapter(receiver, "receiveMessage");
+	MessageListenerAdapter listenerAdapter(Receiver receiverInitial) {
+		return new MessageListenerAdapter(receiverInitial, "receiveMessage");
 	}
 
 	public static void main(String[] args) throws InterruptedException {

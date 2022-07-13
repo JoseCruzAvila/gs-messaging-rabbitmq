@@ -102,7 +102,7 @@ NOTE: You can also fork the project from Github and open it in your IDE or other
 
 == Create a RabbitMQ Message Receiver
 
-With any messaging-based application, you need to create a receiver that responds to
+With any messaging-based application, you need to create a receiverInitial that responds to
 published messages. The following listing (from
 `src/main/java/com.example.messagingrabbitmq/Receiver.java`) shows how to do so:
 
@@ -157,7 +157,7 @@ messages to only one consumer. While AMQP queues do the same thing, AMQP produce
 send messages directly to queues. Instead, a message is sent to an exchange, which can go
 to a single queue or fan out to multiple queues, emulating the concept of JMS topics.
 
-The message listener container and receiver beans are all you need to listen for messages.
+The message listener container and receiverInitial beans are all you need to listen for messages.
 To send a message, you also need a Rabbit template.
 
 The `queue()` method creates an AMQP queue. The `exchange()` method creates a topic
@@ -174,7 +174,7 @@ In this case, we use a topic exchange, and the queue is bound with a routing key
 == Send a Test Message
 
 In this sample, test messages are sent by a `CommandLineRunner`, which also waits for the
-latch in the receiver and closes the application context. The following listing (from
+latch in the receiverInitial and closes the application context. The following listing (from
 `src/main/java/com.example.messagingrabbitmq/Runner.java`) shows how it works:
 
 ====
@@ -187,7 +187,7 @@ include::complete/src/main/java/com/example/messagingrabbitmq/Runner.java[]
 Notice that the template routes the message to the exchange with a routing key of
 `foo.bar.baz`, which matches the binding.
 
-In tests, you can mock out the runner so that the receiver can be tested in isolation.
+In tests, you can mock out the runner so that the receiverInitial can be tested in isolation.
 
 == Run the Application
 
